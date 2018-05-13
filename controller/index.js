@@ -19,6 +19,10 @@ const loadImage = async (ctx, next) => {
         fileType,
         path: serverFilePath
     });
+    if (data == 0) {
+        ctx.body = { code: 500, msg: "err" };
+        return;
+    }
     ctx.body = { code: 200, msg: "上传成功", data };
 };
 
@@ -26,16 +30,17 @@ const loadBase64 = async (ctx, next) => {
     const fileType = filterUrl(ctx.url);
     let serverFilePath = path.join(__dirname, "../static");
     // try {
-        const { imagData } = ctx.request.body;
-        if (!imagData) throw 1;
-        const data = await saveBase64(imagData, {
-            fileType,
-            path: serverFilePath
-        });
-        ctx.body = { code: 200, msg: "上传成功", data };
-    // } catch (error) {
-        // ctx.body = { code: 500, msg: "err" };
-    // }
+    const { imagData } = ctx.request.body;
+    if (!imagData) throw 1;
+    const data = await saveBase64(imagData, {
+        fileType,
+        path: serverFilePath
+    });
+    if (data == 0) {
+        ctx.body = { code: 500, msg: "err" };
+        return;
+    }
+    ctx.body = { code: 200, msg: "上传成功", data };
 };
 
 module.exports = {

@@ -37,7 +37,7 @@ function saveBase64(imagData, options) {
     return new Promise((resolve, reject) => {
         fs.writeFile(saveTo, dataBuffer, err => {
             if (err) {
-                reject(err);
+                reject(0);
             } else {
                 resolve([
                     `https://image.xiexiaoshun.com/${fileType}/${fileName}`
