@@ -10,7 +10,11 @@ const app = new Koa();
 const staticPath = "./static";
 
 app.use(static(path.join(__dirname, staticPath)));
-app.use(bodyParser());
+app.use(
+    bodyParser({
+        formLimit: "5mb"
+    })
+);
 app.use(cors());
 router(app);
 

@@ -29,8 +29,7 @@ const loadImage = async (ctx, next) => {
 const loadBase64 = async (ctx, next) => {
     const fileType = filterUrl(ctx.url);
     let serverFilePath = path.join(__dirname, "../static");
-    // try {
-    const { imagData } = ctx.request.body;
+    let { imagData } = ctx.request.body;
     if (!imagData) throw 1;
     const data = await saveBase64(imagData, {
         fileType,
