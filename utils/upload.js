@@ -3,6 +3,7 @@ const path = require("path");
 const os = require("os");
 const fs = require("fs");
 const Busboy = require("busboy");
+const webp = require("../utils/webp");
 
 /**
  * 同步创建文件目录
@@ -18,6 +19,12 @@ function mkdirsSync(dirname) {
       return true;
     }
   }
+}
+// 
+function randomName(){
+  const f = Math.random().toString(16).substr(2);
+  const l = Math.random().toString(16).substr(2);
+  return f+'-'+l
 }
 
 /**
@@ -52,35 +59,28 @@ function uploadFile(ctx, options) {
 
     // 解析请求文件事件
     busboy.on("file", function(fieldname, file, filename, encoding, mimetype) {
-      let fileName =
-        Math.random()
-          .toString(16)
-          .substr(2) +
-        "." +
-        getSuffixName(filename);
+      let _name = randomName();
+      let fileName =_name +"." + getSuffixName(filename);
       let _uploadFilePath = path.join(filePath, fileName);
       let saveTo = path.join(_uploadFilePath);
-
       // 文件保存到制定路径
       file.pipe(fs.createWriteStream(saveTo));
 
       // 文件写入事件结束
       file.on("end", function() {
+        webp(saveTo,filePath) //转换成webp格式
         result.push(`https://image.xiexiaoshun.com/${fileType}/${fileName}`)
-        console.log("文件上传成功！");
-        // resolve(result);
       });
     });
 
     // 解析结束事件
     busboy.on("finish", function() {
-      console.log("文件上结束");
       resolve(result);
     });
 
     // 解析错误事件
     busboy.on("error", function(err) {
-      console.log("文件上出错");
+      // console.log("文件上出错");
       reject(0);
     });
 

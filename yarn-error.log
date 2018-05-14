@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add koa-bodyParser
+  /usr/local/bin/node /usr/local/bin/yarn add webp
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -26,7 +26,9 @@ npm manifest:
     "license": "ISC",
     "dependencies": {
       "busboy": "^0.2.14",
+      "cwebp": "^2.0.2",
       "koa": "^2.5.1",
+      "koa-bodyparser": "^4.2.0",
       "koa-router": "^7.4.0",
       "koa-static": "^4.0.2",
       "koa2-cors": "^2.0.5"
@@ -59,6 +61,19 @@ Lockfile:
       dicer "0.2.5"
       readable-stream "1.1.x"
   
+  bytes@3.0.0:
+    version "3.0.0"
+    resolved "http://registry.npm.taobao.org/bytes/download/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
+  
+  co-body@^5.1.0:
+    version "5.2.0"
+    resolved "http://registry.npm.taobao.org/co-body/download/co-body-5.2.0.tgz#5a0a658c46029131e0e3a306f67647302f71c124"
+    dependencies:
+      inflation "^2.0.0"
+      qs "^6.4.0"
+      raw-body "^2.2.0"
+      type-is "^1.6.14"
+  
   co@^4.6.0:
     version "4.6.0"
     resolved "http://registry.npm.taobao.org/co/download/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -78,9 +93,21 @@ Lockfile:
       depd "~1.1.1"
       keygrip "~1.0.2"
   
+  copy-to@^2.0.1:
+    version "2.0.1"
+    resolved "http://registry.npm.taobao.org/copy-to/download/copy-to-2.0.1.tgz#2680fbb8068a48d08656b6098092bdafc906f4a5"
+  
   core-util-is@~1.0.0:
     version "1.0.2"
     resolved "http://registry.npm.taobao.org/core-util-is/download/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+  
+  cwebp@^2.0.2:
+    version "2.0.2"
+    resolved "http://registry.npm.taobao.org/cwebp/download/cwebp-2.0.2.tgz#b70919b969837c68688f51729c0fa74e2f39a6f9"
+    dependencies:
+      raw-body "2"
+      through "~2.3"
+      when "3"
   
   debug@*, debug@^3.1.0:
     version "3.1.0"
@@ -140,7 +167,7 @@ Lockfile:
       deep-equal "~1.0.1"
       http-errors "~1.6.1"
   
-  http-errors@^1.2.8, http-errors@^1.3.1, http-errors@^1.6.1, http-errors@~1.6.1, http-errors@~1.6.2:
+  http-errors@1.6.3, http-errors@^1.2.8, http-errors@^1.3.1, http-errors@^1.6.1, http-errors@~1.6.1, http-errors@~1.6.2:
     version "1.6.3"
     resolved "http://registry.npm.taobao.org/http-errors/download/http-errors-1.6.3.tgz#8b55680bb4be283a0b5bf4ea2e38580be1d9320d"
     dependencies:
@@ -148,6 +175,16 @@ Lockfile:
       inherits "2.0.3"
       setprototypeof "1.1.0"
       statuses ">= 1.4.0 < 2"
+  
+  iconv-lite@0.4.23:
+    version "0.4.23"
+    resolved "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
+    dependencies:
+      safer-buffer ">= 2.1.2 < 3"
+  
+  inflation@^2.0.0:
+    version "2.0.0"
+    resolved "http://registry.npm.taobao.org/inflation/download/inflation-2.0.0.tgz#8b417e47c28f925a45133d914ca1fd389107f30f"
   
   inherits@2.0.3, inherits@~2.0.1:
     version "2.0.3"
@@ -164,6 +201,13 @@ Lockfile:
   keygrip@~1.0.2:
     version "1.0.2"
     resolved "http://registry.npm.taobao.org/keygrip/download/keygrip-1.0.2.tgz#ad3297c557069dea8bcfe7a4fa491b75c5ddeb91"
+  
+  koa-bodyparser@^4.2.0:
+    version "4.2.0"
+    resolved "http://registry.npm.taobao.org/koa-bodyparser/download/koa-bodyparser-4.2.0.tgz#bce6e08bc65f8709b6d1faa9411c7f0d8938aa54"
+    dependencies:
+      co-body "^5.1.0"
+      copy-to "^2.0.1"
   
   koa-compose@^3.0.0:
     version "3.2.1"
@@ -308,6 +352,19 @@ Lockfile:
     dependencies:
       isarray "0.0.1"
   
+  qs@^6.4.0:
+    version "6.5.2"
+    resolved "http://registry.npm.taobao.org/qs/download/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
+  
+  raw-body@2, raw-body@^2.2.0:
+    version "2.3.3"
+    resolved "http://registry.npm.taobao.org/raw-body/download/raw-body-2.3.3.tgz#1b324ece6b5706e153855bc1148c65bb7f6ea0c3"
+    dependencies:
+      bytes "3.0.0"
+      http-errors "1.6.3"
+      iconv-lite "0.4.23"
+      unpipe "1.0.0"
+  
   readable-stream@1.1.x:
     version "1.1.14"
     resolved "http://registry.npm.taobao.org/readable-stream/download/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
@@ -323,6 +380,10 @@ Lockfile:
     dependencies:
       http-errors "~1.6.2"
       path-is-absolute "1.0.1"
+  
+  "safer-buffer@>= 2.1.2 < 3":
+    version "2.1.2"
+    resolved "http://registry.npm.taobao.org/safer-buffer/download/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   
   setprototypeof@1.1.0:
     version "1.1.0"
@@ -352,12 +413,20 @@ Lockfile:
     dependencies:
       any-promise "^1.0.0"
   
-  type-is@^1.5.5:
+  through@~2.3:
+    version "2.3.8"
+    resolved "http://registry.npm.taobao.org/through/download/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
+  
+  type-is@^1.5.5, type-is@^1.6.14:
     version "1.6.16"
     resolved "http://registry.npm.taobao.org/type-is/download/type-is-1.6.16.tgz#f89ce341541c672b25ee7ae3c73dee3b2be50194"
     dependencies:
       media-typer "0.3.0"
       mime-types "~2.1.18"
+  
+  unpipe@1.0.0:
+    version "1.0.0"
+    resolved "http://registry.npm.taobao.org/unpipe/download/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   
   urijs@^1.19.0:
     version "1.19.1"
@@ -366,13 +435,26 @@ Lockfile:
   vary@^1.0.0:
     version "1.1.2"
     resolved "http://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+  
+  when@3:
+    version "3.7.8"
+    resolved "http://registry.npm.taobao.org/when/download/when-3.7.8.tgz#c7130b6a7ea04693e842cdc9e7a1f2aa39a39f82"
 
 Trace: 
-  Error: Couldn't find package "koa-bodyParser" on the "npm" registry.
-      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
-      at NpmResolver.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:51625:15)
-      at Generator.next (<anonymous>)
-      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
-      at <anonymous>
-      at process._tickCallback (internal/process/next_tick.js:188:7)
+  Error: /Users/administrator/Documents/my/image_server/node_modules/webp: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c make build
+  Directory: /Users/administrator/Documents/my/image_server/node_modules/webp
+  Output:
+  xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Socket.stream.socket.on (internal/child_process.js:346:11)
+      at emitOne (events.js:116:13)
+      at Socket.emit (events.js:211:7)
+      at Pipe._handle.close [as _onclose] (net.js:554:12)
