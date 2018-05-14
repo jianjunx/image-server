@@ -54,7 +54,7 @@ function uploadFile(ctx, options) {
   let mkdirResult = mkdirsSync(filePath);
 
   return new Promise((resolve, reject) => {
-    console.log("文件上传中...");
+    // console.log("文件上传中...");
     let result = [];
 
     // 解析请求文件事件
