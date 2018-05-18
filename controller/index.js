@@ -20,10 +20,10 @@ const loadImage = async (ctx, next) => {
         path: serverFilePath
     });
     if (data == 0) {
-        ctx.body = { code: 500, msg: "err" };
+        ctx.body = { code: 1, msg: "err" };
         return;
     }
-    ctx.body = { code: 200, msg: "上传成功", data };
+    ctx.body = { errno: 0, msg: "上传成功", data };
 };
 
 const loadBase64 = async (ctx, next) => {
