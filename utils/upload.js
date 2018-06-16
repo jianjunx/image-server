@@ -69,7 +69,7 @@ function uploadFile(ctx, options) {
       // 文件写入事件结束
       file.on("end", function() {
         webp(saveTo,filePath) //转换成webp格式
-        result.push(`https://image.xiexiaoshun.com/${fileType}/${fileName}`)
+        result.push(`https://static.jef.site/${fileType}/${fileName}`)
       });
     });
 

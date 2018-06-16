@@ -40,7 +40,7 @@ function saveBase64(imagData, options) {
                 reject(0);
             } else {
                 resolve([
-                    `https://image.xiexiaoshun.com/${fileType}/${fileName}`
+                    `https://static.jef.site/${fileType}/${fileName}`
                 ]);
             }
         });
